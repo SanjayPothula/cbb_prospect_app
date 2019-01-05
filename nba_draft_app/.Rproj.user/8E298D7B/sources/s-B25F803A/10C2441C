@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1546715486462.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "10C2441C",
+    "lastKnownWriteTime" : 338636976,
+    "last_content_update" : 1546715486462,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "A64E9060",
+        "caption" : "college_stats",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=college_stats&cache_key=A64E9060",
+        "displayedObservations" : 89,
+        "environment" : "",
+        "object" : "college_stats",
+        "preview" : 0,
+        "totalObservations" : 89,
+        "variables" : 26
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

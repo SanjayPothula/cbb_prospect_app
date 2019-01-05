@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1546710094004.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "38405987",
+    "lastKnownWriteTime" : 1546728509,
+    "last_content_update" : 1546728509538,
+    "path" : "~/R_Projects/nba_draft_app/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "453,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

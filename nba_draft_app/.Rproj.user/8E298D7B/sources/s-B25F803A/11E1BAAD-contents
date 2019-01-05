@@ -1,0 +1,122 @@
+load("data/draft_prospects.RData")
+
+library(ggplot2)
+library(dplyr)
+library(ggthemes)
+single_player<-college_stats %>% group_by(pos) %>% mutate(
+  sos = round(cume_dist(sos)*100),
+  ts_pct= round(cume_dist(ts_pct)*100),
+  pts_m= round(cume_dist(pts_m)*100),
+  ast_m= round(cume_dist(ast_m)*100),
+  trb_m= round(cume_dist(trb_m)*100),
+  tov_m= 100 - round(cume_dist(tov_m)*100),
+  pf_m= 100 - round(cume_dist(pf_m)*100),
+  blk_m= round(cume_dist(blk_m)*100),
+  stl_m= round(cume_dist(stl_m)*100),
+  fg3a_per_fga_pct= round(cume_dist(fg3a_per_fga_pct)*100),
+  usg_prx= round(cume_dist(usg_prx)*100),
+  Xwar_season= round(cume_dist(Xwar_season)*100)
+) %>% filter(cbb_url == '/cbb/players/shamorie-ponds-1.html')
+
+Xwar_season<-ggplot(data = single_player, aes(x= player_name, y = Xwar_season)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("Expected WAR") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+
+sos<-ggplot(data = single_player, aes(x= player_name, y = sos)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("SOS") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                    axis.text.y=element_blank(),
+                                                                                    axis.title.y=element_blank(),
+                                                                                    axis.title.x = element_blank())
+ts_pct<-ggplot(data = single_player, aes(x= player_name, y = ts_pct)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("TS%") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+
+pts_m<-ggplot(data = single_player, aes(x= player_name, y = pts_m)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("PTS Per 36") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+
+ast_m<-ggplot(data = single_player, aes(x= player_name, y = ast_m)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("AST Per 36") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+
+trb_m<-ggplot(data = single_player, aes(x= player_name, y = trb_m)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("TRB Per 36") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+
+tov_m<-ggplot(data = single_player, aes(x= player_name, y = tov_m)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("TOV Per 36") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+
+blk_m<-ggplot(data = single_player, aes(x= player_name, y = blk_m)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("BLK Per 36") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+
+stl_m<-ggplot(data = single_player, aes(x= player_name, y = stl_m)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("STL Per 36") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+
+fg3a_per_fga_pct<-ggplot(data = single_player, aes(x= player_name, y = fg3a_per_fga_pct)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("3-Point Rate Per FG") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+
+usg_prx<-ggplot(data = single_player, aes(x= player_name, y = usg_prx)) + 
+  geom_bar(stat = "identity", width = 0.3, color = 'black', fill = 'red') + 
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 10)) + coord_flip() + 
+  geom_hline(aes(yintercept = 25), color = 'black')+ geom_hline(aes(yintercept = 50), color = 'black')+ 
+  geom_hline(aes(yintercept = 75), color = 'black') + theme_bw() + ggtitle("Usage") + theme(plot.margin = unit(c(2.5,1,2.5,1),"cm"),
+                                                                                          axis.text.y=element_blank(),
+                                                                                          axis.title.y=element_blank(),
+                                                                                          axis.title.x = element_blank())
+require(gridExtra)
+require(grid)
+grid.arrange(Xwar_season, sos, usg_prx, ncol = 1, top=textGrob("General",gp=gpar(fontsize=20,font=2)))
+grid.arrange(pts_m, fg3a_per_fga_pct, ts_pct, ast_m, trb_m, tov_m, ncol = 2, top=textGrob("Offense",gp=gpar(fontsize=20,font=2)))
+grid.arrange(stl_m, blk_m, ncol = 1, top=textGrob("Defense",gp=gpar(fontsize=20,font=2)))
