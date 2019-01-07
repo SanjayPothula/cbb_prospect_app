@@ -443,7 +443,7 @@ server <- function(input, output, session) {
     DT::datatable(player_df, 
                   rownames = FALSE, 
                   colnames = c("Name", "School", "Conf", "Pos", "N", "G", "PTS", "FG3R", "TS%", "AST", "TRB", "TOV", "STL", "BLK", "SOS", 'xWAR'), 
-                  options = list(dom = 't',ordering = T, pageLength = 25, columnDefs = list(list(className = 'dt-center', targets = "_all"))))
+                  options = list(ordering = T, pageLength = 25, columnDefs = list(list(className = 'dt-center', targets = "_all"))))
   })
   session$onSessionEnded(stopApp)
 }
